@@ -40,12 +40,12 @@ export async function login(bodyData) {
 
   const accessToken = jwt.sign({}, JWT_ACCESS_SIGNATURE, {
     expiresIn: JWT_ACCESS_EXPIRES_IN,
-    subject: user.id,
+    subject: payload.sub,
   });
 
   const refreshToken = jwt.sign({}, JWT_REFRESH_SIGNATURE, {
     expiresIn: JWT_REFRESH_EXPIRES_IN,
-    subject: user.id,
+    subject: payload.sub,
   });
 
   return { accessToken, refreshToken };
