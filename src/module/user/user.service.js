@@ -5,7 +5,7 @@ export function rotateToken(payload) {
   });
 
   const refreshToken = jwt.sign({}, JWT_REFRESH_SIGNATURE, {
-    expiresIn: JWT_REFRESH_EXPIRES_IN - (Date.now() / 1000 - payload.int),
+    expiresIn: JWT_REFRESH_EXPIRES_IN - (Date.now() / 1000 - payload.iat),
     subject: user.id,
   });
   return { accessToken, refreshToken };
